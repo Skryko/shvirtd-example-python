@@ -1,1 +1,11 @@
+.env
+/opt/backup
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.vscode/
+.idea/
+*.sqlite3
 

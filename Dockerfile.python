@@ -1,10 +1,15 @@
-#Dockerfile.python
 FROM python:3.12-slim
 
 WORKDIR /app
 
-COPY ..
+COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requiments.txt
+RUN pip install --no-cache-dir -r requirements.txt && \
+    echo "Installed packages:" && \
+    pip list
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]
+COPY . .
+
+RUN which uvicorn || echo "uvicorn not found!"
+
+CMD ["/usr/local/bin/uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]

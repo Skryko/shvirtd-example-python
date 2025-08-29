@@ -1,1 +1,32 @@
+include:
+  - proxy.yaml
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    networks:
+      backend:
+        ipv4_address: 172.20.0.5
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: ioi
+      MYSQL_PASSWORD: 0990
+      MYSQL_DATABASE: homework_2
+    restart: always
+    depends_on:
+      - db
 
+  db:
+    image: mysql:8
+    networks:
+      backend:
+        ipv4_address: 172.20.0.10
+    environment:
+      MYSQL_ROOT_PASSWORD: 0990
+      MYSQL_DATABASE: homework_2
+      MYSQL_USER: ioi
+      MYSQL_PASSWORD: 0990
+    restart: always
+    env_file:
+      - .env
