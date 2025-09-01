@@ -1,5 +1,3 @@
-nclude:
-  - proxy.yaml
 services:
   web:
     build:
