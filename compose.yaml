@@ -9,10 +9,10 @@ services:
       backend:
         ipv4_address: 172.20.0.5
     environment:
-      MYSQL_HOST: db
-      MYSQL_USER: ioi
-      MYSQL_PASSWORD: 0990
-      MYSQL_DATABASE: homework_2
+      db_HOST: db
+      db_USER: ioi
+      db_PASSWORD: 0990
+      db_DATABASE: homework_2
     restart: always
     depends_on:
       - db
@@ -23,10 +23,10 @@ services:
       backend:
         ipv4_address: 172.20.0.10
     environment:
-      MYSQL_ROOT_PASSWORD: 0990
-      MYSQL_DATABASE: homework_2
-      MYSQL_USER: ioi
-      MYSQL_PASSWORD: 0990
+      db_ROOT_PASSWORD: 0990
+      db_DATABASE: homework_2
+      db_USER: ioi
+      db_PASSWORD: 0990
     restart: always
     env_file:
       - .env
