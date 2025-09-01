@@ -7,10 +7,10 @@ services:
       backend:
         ipv4_address: 172.20.0.5
     environment:
-      db_HOST: db
-      db_USER: ioi
-      db_PASSWORD: 0990
-      db_DATABASE: homework_2
+      DB_HOST: db
+      DB_USER: ioi
+      DB_PASSWORD: 0990
+      DB_DATABASE: homework_2
     restart: always
     depends_on:
       - db
