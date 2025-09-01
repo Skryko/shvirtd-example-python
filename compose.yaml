@@ -1,6 +1,5 @@
-include:
+nclude:
   - proxy.yaml
-
 services:
   web:
     build:
@@ -10,10 +9,10 @@ services:
       backend:
         ipv4_address: 172.20.0.5
     environment:
-      DB_HOST: db
-      DB_USER: ioi
-      DB_PASSWORD: 0990
-      DB_NAME: homework_2
+      db_HOST: db
+      db_USER: ioi
+      db_PASSWORD: 0990
+      db_DATABASE: homework_2
     restart: always
     depends_on:
       - db
@@ -31,7 +30,3 @@ services:
     restart: always
     env_file:
       - .env
-
-networks:
-  backend:
-    external: true
