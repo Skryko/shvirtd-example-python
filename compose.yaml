@@ -14,6 +14,8 @@ services:
     restart: always
     depends_on:
       - db
+    ports:
+      - "8090:5000"   # Пробрасываем наружу: хост:контейнер
 
   db:
     image: mysql:8
