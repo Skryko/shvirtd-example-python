@@ -8,9 +8,9 @@ services:
         ipv4_address: 172.20.0.5
     environment:
       DB_HOST: db
-      DB_USER: ioi
-      DB_PASSWORD: 0990
-      DB_DATABASE: homework_2
+      DB_USER: app
+      DB_PASSWORD: very_strong
+      DB_DATABASE: example
     restart: always
     depends_on:
       - db
