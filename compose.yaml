@@ -8,14 +8,14 @@ services:
         ipv4_address: 172.20.0.5
     environment:
       DB_HOST: db
-      DB_USER: app
-      DB_PASSWORD: very_strong
-      DB_DATABASE: example
+      DB_USER: ioi
+      DB_PASSWORD: 0990
+      DB_NAME: homework_2
     restart: always
     depends_on:
       - db
     ports:
-      - "8090:5000"   # Пробрасываем наружу: хост:контейнер
+      - "8090:5000"
 
   db:
     image: mysql:8
