@@ -8,9 +8,9 @@ services:
         ipv4_address: 172.20.0.5
     environment:
       DB_HOST: db
-      DB_USER: ioi
-      DB_PASSWORD: 0990
-      DB_NAME: homework_2
+      DB_USER: app
+      DB_PASSWORD: very_strong
+      DB_NAME: example
     restart: always
     depends_on:
       - db
@@ -24,9 +24,9 @@ services:
         ipv4_address: 172.20.0.10
     environment:
       MYSQL_ROOT_PASSWORD: 0990
-      MYSQL_DATABASE: homework_2
-      MYSQL_USER: ioi
-      MYSQL_PASSWORD: 0990
+      MYSQL_DATABASE: example
+      MYSQL_USER: app
+      MYSQL_PASSWORD: very_strong
     restart: always
     env_file:
       - .env
