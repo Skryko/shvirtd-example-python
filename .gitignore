@@ -1,11 +1,11 @@
 .env
-/opt/backup
+venv/
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 *.log
-.vscode/
+.DS_Store
 .idea/
-*.sqlite3
-
+.vscode/
+/opt/backup
