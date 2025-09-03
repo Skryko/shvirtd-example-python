@@ -17,7 +17,7 @@ services:
       DB_PASSWORD: "${DB_PASSWORD:-${MYSQL_PASSWORD}}"
       DB_NAME: "${DB_NAME:-${MYSQL_DATABASE}}"
     ports:
-      - "8090:5000"
+      - "8091:5000"
     networks:
       backend:
         ipv4_address: 172.20.0.5
