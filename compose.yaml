@@ -8,7 +8,8 @@ services:
       dockerfile: Dockerfile.python
     restart: always
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     env_file:
       - .env
     environment:
@@ -34,6 +35,11 @@ services:
       MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
     ports:
       - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
       backend:
         ipv4_address: 172.20.0.10
