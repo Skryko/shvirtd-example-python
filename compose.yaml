@@ -1,35 +1,42 @@
+include:
+  - proxy.yaml
+
 services:
   web:
     build:
       context: .
       dockerfile: Dockerfile.python
-    networks:
-      backend:
-        ipv4_address: 172.20.0.5
-    environment:
-      DB_HOST: db
-      DB_USER: app
-      DB_PASSWORD: very_strong
-      DB_NAME: example
     restart: always
     depends_on:
       - db
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+      DB_USER: "${DB_USER}"
+      DB_PASSWORD: "${DB_PASSWORD}"
+      DB_NAME: "${DB_NAME}"
     ports:
       - "8090:5000"
+    networks:
+      backend:
+        ipv4_address: 172.20.0.5
 
   db:
     image: mysql:8
-    networks:
-      backend:
-        ipv4_address: 172.20.0.10
-    environment:
-      MYSQL_ROOT_PASSWORD: 0990
-      MYSQL_DATABASE: example
-      MYSQL_USER: app
-      MYSQL_PASSWORD: very_strong
     restart: always
     env_file:
       - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    ports:
+      - "3306:3306"
+    networks:
+      backend:
+        ipv4_address: 172.20.0.10
 
 networks:
   backend:
